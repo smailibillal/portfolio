@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio – Billal Smaili</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-xl: 1.5rem;
+      --radius-lg: 1rem;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+      --shadow-chip: 0 10px 25px rgba(15, 23, 42, 0.6);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    @media (min-width: 1024px) {
+      .shell {
+        padding-top: 3.5rem;
+      }
+    }
+
+    /* Top nav */
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #38bdf8, #0ea5e9 35%, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #e5f2ff;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.4),
+        0 12px 30px rgba(56, 189, 248, 0.55);
+      font-size: 0.95rem;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-name {
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-tag {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      border-radius: 999px;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr);
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        align-items: center;
+      }
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: #cbd5f5;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      width: fit-content;
+    }
+
+    .hero-pill span {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3.6vw + 1rem, 3.4rem);
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      max-width: 32rem;
+      font-size: 0.98rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 0.8rem;
+    }
+
+    .btn {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease, color 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1220;
+      font-weight: 600;
+      box-shadow: 0 14px 35px rgba(56, 189, 248, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.6);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: #cbd5f5;
+      box-shadow: var(--shadow-chip);
+    }
+
+    .chip span {
+      color: #38bdf8;
+      margin-right: 0.2rem;
+    }
+
+    .hero-right {
+      display: none;
+    }
+
+    @media (min-width: 900px) {
+      .hero-right {
+        display: block;
+      }
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #1d283a, #020617 55%);
+      border-radius: 2rem;
+      padding: 1.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 1.3rem;
+      right: 1.3rem;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.86);
+      color: #e5e7eb;
+    }
+
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.25), transparent 60%),
+        radial-gradient(circle at 90% 80%, rgba(34, 197, 94, 0.2), transparent 55%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-role {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9ca3af;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-name {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-meta strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      font-size: 0.78rem;
+    }
+
+    .stat-box {
+      padding: 0.7rem 0.9rem;
+      border-radius: 1rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: #9ca3af;
+      margin-bottom: 0.15rem;
+    }
+
+    .stat-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .stat-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.3rem;
+    }
+
+    .stat-pill {
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.7rem;
+      color: #cbd5f5;
+    }
+
+    /* Sections */
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .section-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Skills */
+
+    .skills-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 800px) {
+      .skills-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.1rem 1.15rem;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.85);
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .card ul {
+      list-style: none;
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .card ul li::before {
+      content: "• ";
+      color: #38bdf8;
+    }
+
+    /* Experience & Projects */
+
+    .timeline {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .item {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1rem 1.05rem;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .item-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .item-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .item-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .item-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .item ul {
+      list-style: none;
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .item ul li {
+      margin-bottom: 0.2rem;
+    }
+
+    .item ul li::before {
+      content: "– ";
+      color: #38bdf8;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: #cbd5f5;
+    }
+
+    /* Two-column layout for exp + projects */
+
+    .grid-2 {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 960px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      }
+    }
+
+    /* Chips lists */
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      font-size: 0.8rem;
+    }
+
+    .pill-soft {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #cbd5f5;
+    }
+
+    /* Contact */
+
+    .contact {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .contact {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      }
+    }
+
+    .contact-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
+      font-size: 0.85rem;
+      color: #cbd5f5;
+    }
+
+    .contact-card p span {
+      color: #9ca3af;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .contact-links a {
+      color: #e5e7eb;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="shell">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-mark">BS</div>
+        <div class="brand-text">
+          <div class="brand-name">BILLAL SMAILI</div>
+          <div class="brand-tag">MIAGE • DATA • FULL-STACK • IA</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#skills">Compétences</a>
+        <a href="#experience">Expériences</a>
+        <a href="#projects">Projets</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-left">
+        <div class="hero-pill">
+          <span></span> À la recherche d’un stage de fin d’études – Février 2026
+        </div>
+        <h1 class="hero-title">
+          Étudiant <span>MIAGE</span>, entre <span>data</span>, <span>développement</span> & <span>IA</span>.
+        </h1>
+        <p class="hero-subtitle">
+          Étudiant en Master 2 MIAGE à l’Université de Haute-Alsace, je conçois des applications
+          data-driven : machine learning, web full-stack, Salesforce et projets autour des modèles de langue (LLM).
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="CV.pdf" target="_blank" rel="noreferrer">
+            Télécharger mon CV
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/billalsmaili/" target="_blank" rel="noreferrer">
+            Voir mon LinkedIn
+          </a>
+        </div>
+        <div class="hero-tags">
+          <div class="chip"><span>◆</span>Data Engineering & ML</div>
+          <div class="chip"><span>◆</span>Full-Stack (MERN, Spring Boot)</div>
+          <div class="chip"><span>◆</span>Salesforce (Apex, LWC)</div>
+          <div class="chip"><span>◆</span>LLM & IA appliquée</div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hero-mesh"></div>
+          <div class="hero-card-inner">
+            <div class="hero-badge">Disponible pour un stage de 6 mois</div>
+            <div class="hero-role">Master 2 MIAGE</div>
+            <div class="hero-name">Université de Haute-Alsace</div>
+            <div class="hero-meta">
+              <strong>Basé à :</strong> Mulhouse, France<br />
+              <strong>Focus :</strong> Data • ML • Web • Salesforce
+            </div>
+            <div class="hero-stats">
+              <div class="stat-box">
+                <div class="stat-label">Expériences</div>
+                <div class="stat-value">3 stages</div>
+                <div class="stat-pills">
+                  <div class="stat-pill">Port & optimisation</div>
+                  <div class="stat-pill">MERN</div>
+                </div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">Domaines</div>
+                <div class="stat-value">Data & Dev</div>
+                <div class="stat-pills">
+                  <div class="stat-pill">Machine Learning</div>
+                  <div class="stat-pill">LLM</div>
+                  <div class="stat-pill">Salesforce</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="section-title">Compétences clés</h2>
+        <span class="section-tagline">Ce avec quoi je construis, analyse et déploie.</span>
+      </div>
+      <div class="skills-grid">
+        <div class="card">
+          <h3>Environnements techniques</h3>
+          <p>Langages, frameworks et plateformes que j’utilise au quotidien.</p>
+          <ul>
+            <li>Python, SQL, JavaScript, Java, PHP</li>
+            <li>React, Node.js, FastAPI, Spring Boot, Laravel</li>
+            <li>Salesforce (Apex, LWC, Flow), Docker</li>
+            <li>GitHub, GitLab, Jira</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Data engineering & analyse</h3>
+          <p>De la collecte à la visualisation de données métiers.</p>
+          <ul>
+            <li>Conception de pipelines de données (ETL)</li>
+            <li>Traitement avec Python (Pandas, NumPy)</li>
+            <li>Bases de données : PostgreSQL, MongoDB, Oracle</li>
+            <li>Power BI pour la visualisation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Data science & machine learning</h3>
+          <p>Modèles prédictifs et systèmes de recommandation.</p>
+          <ul>
+            <li>Prétraitement & analyse exploratoire</li>
+            <li>Régression, classification, recommandation</li>
+            <li>Scikit-learn pour la modélisation</li>
+            <li>Projets de prédiction & optimisation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE + PROJECTS -->
+    <section id="experience">
+      <div class="grid-2">
+        <!-- EXPERIENCE -->
+        <div>
+          <div class="section-header">
+            <h2 class="section-title">Expériences professionnelles</h2>
+            <span class="section-tagline">Stages & milieux concrets.</span>
+          </div>
+          <div class="timeline">
+            <article class="item">
+              <div class="item-inner">
+                <div class="item-header">
+                  <div class="item-title">Stage – Optimisation du stockage des conteneurs</div>
+                  <div class="item-meta">Port de Béjaïa (EPB) • 2024</div>
+                </div>
+                <div class="item-sub">Machine learning & optimisation dans un terminal portuaire.</div>
+                <ul>
+                  <li>Collecte et préparation des données du SI portuaire (arrivées/départs, durée de séjour, types de conteneurs…)</li>
+                  <li>Modèle ML pour prédire la priorisation et la durée de séjour des conteneurs</li>
+                  <li>Algorithme génétique pour optimiser le placement selon la priorité</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">Python</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">Scikit-learn</span>
+                  <span class="tag">Optimisation</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="item">
+              <div class="item-inner">
+                <div class="item-header">
+                  <div class="item-title">Stagiaire développeur web</div>
+                  <div class="item-meta">CTIB • 2022–2023</div>
+                </div>
+                <div class="item-sub">Application de gestion des coûts en stack MERN.</div>
+                <ul>
+                  <li>Développement d’une application de gestion des coûts (MERN)</li>
+                  <li>Travail en équipe agile avec Jira</li>
+                  <li>Participation aux spécifications fonctionnelles et au chiffrage</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">React</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">MongoDB</span>
+                  <span class="tag">Jira</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="item">
+              <div class="item-inner">
+                <div class="item-header">
+                  <div class="item-title">Stagiaire développeur full-stack</div>
+                  <div class="item-meta">Mairie de Darguina • 2021</div>
+                </div>
+                <div class="item-sub">Site web dynamique pour une collectivité.</div>
+                <ul>
+                  <li>Analyse des besoins et collecte des données administratives</li>
+                  <li>Modélisation UML, implémentation et intégration</li>
+                  <li>Site dynamique pour la municipalité</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">PHP</span>
+                  <span class="tag">MySQL</span>
+                  <span class="tag">Bootstrap</span>
+                  <span class="tag">UML</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div id="projects">
+          <div class="section-header">
+            <h2 class="section-title">Projets sélectionnés</h2>
+            <span class="section-tagline">Là où j’expérimente et j’apprends le plus.</span>
+          </div>
+          <div class="timeline">
+            <article class="item">
+              <div class="item-inner">
+                <div class="item-header">
+                  <div class="item-title">Plateforme d’échange d’énergie verte</div>
+                  <div class="item-meta">Projet personnel</div>
+                </div>
+                <div class="item-sub">Échanges d’électricité pair-à-pair entre producteurs et consommateurs.</div>
+                <ul>
+                  <li>Conception et développement d’une plateforme d’échange d’énergie verte</li>
+                  <li>Interface moderne en Angular pour le suivi des échanges</li>
+                  <li>Backend en Spring Boot pour la gestion des transactions et profils</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">Angular</span>
+                  <span class="tag">Spring Boot</span>
+                  <span class="tag">REST API</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="item">
+              <div class="item-inner">
+                <div class="item-header">
+                  <div class="item-title">Application de location immobilière avec IA</div>
+                  <div class="item-meta">Projet personnel</div>
+                </div>
+                <div class="item-sub">Prédiction de loyers et interface full-stack.</div>
+                <ul>
+                  <li>Plateforme de location avec moteur de prédiction des loyers</li>
+                  <li>Stack MERN (MongoDB, Express.js, React.js, Node.js)</li>
+                  <li>Intégration d’un modèle Python via API pour l’estimation des loyers</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">MERN</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">Machine Learning</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="item">
+              <div class="item-inner">
+                <div class="item-header">
+                  <div class="item-title">Module Salesforce de gestion commerciale</div>
+                  <div class="item-meta">Projet Salesforce</div>
+                </div>
+                <div class="item-sub">Sales Cloud, automatisation et scoring des leads.</div>
+                <ul>
+                  <li>Mise en place d’un processus complet de gestion des opportunités, devis et comptes</li>
+                  <li>Triggers Apex pour automatiser montants, étapes et prévisions</li>
+                  <li>Interfaces personnalisées en LWC & tableaux de bord</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">Salesforce</span>
+                  <span class="tag">Apex</span>
+                  <span class="tag">LWC</span>
+                  <span class="tag">Lead Scoring</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="item">
+              <div class="item-inner">
+                <div class="item-header">
+                  <div class="item-title">Projets utilisant des LLM</div>
+                  <div class="item-meta">LLM & IA générative</div>
+                </div>
+                <div class="item-sub">Expérimentations autour de ChatGPT, Gemini & co.</div>
+                <ul>
+                  <li>Analyse de vidéos : extraction des sous-titres et score de véracité via LLM</li>
+                  <li>Agent d’analyse d’articles financiers : résumé et “psychologie du marché”</li>
+                  <li>Application de recettes à partir de photos d’ingrédients, avec LLM</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">LLM</span>
+                  <span class="tag">NLP</span>
+                  <span class="tag">IA générative</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUALITIES & LANGUAGES & EDUCATION -->
+    <section>
+      <div class="grid-2">
+        <div>
+          <div class="section-header">
+            <h2 class="section-title">Formation</h2>
+          </div>
+          <div class="timeline">
+            <article class="item">
+              <div class="item-inner">
+                <div class="item-header">
+                  <div class="item-title">Master MIAGE</div>
+                  <div class="item-meta">Université de Haute-Alsace • 2024–2026</div>
+                </div>
+                <div class="item-sub">Management et Informatique Appliquée à la Gestion des Entreprises.</div>
+              </div>
+            </article>
+
+            <article class="item">
+              <div class="item-inner">
+                <div class="item-header">
+                  <div class="item-title">Master Systèmes d’Information Avancés</div>
+                  <div class="item-meta">Université de Béjaïa • 2022–2024</div>
+                </div>
+                <div class="item-sub">Systèmes d’information, data et développement logiciel.</div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-header">
+            <h2 class="section-title">Profil</h2>
+          </div>
+          <div class="card">
+            <h3>Qualités</h3>
+            <div class="pill-list">
+              <span class="pill-soft">rigueur</span>
+              <span class="pill-soft">curiosité intellectuelle</span>
+              <span class="pill-soft">résolution de problèmes</span>
+              <span class="pill-soft">esprit analytique</span>
+            </div>
+            <h3 style="margin-top: 1rem;">Langues</h3>
+            <div class="pill-list">
+              <span class="pill-soft">français : courant</span>
+              <span class="pill-soft">anglais : intermédiaire</span>
+              <span class="pill-soft">arabe : langue maternelle</span>
+              <span class="pill-soft">Kabyle : langue maternelle</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Contact</h2>
+        <span class="section-tagline">Parlons de votre projet ou de votre équipe.</span>
+      </div>
+      <div class="contact">
+        <div class="contact-card">
+          <p>
+            <span>Actuellement :</span> étudiant en Master 2 MIAGE à Mulhouse, disponible pour un
+            stage de fin d’études de 6 mois à partir de <strong>février 2026</strong>.
+          </p>
+          <p style="margin-top: 0.4rem;">
+            Intéressé par : data engineering, machine learning, développement full-stack,
+            Salesforce et IA appliquée (LLM).
+          </p>
+        </div>
+        <div class="contact-links">
+          <div><strong>Email :</strong> <a href="mailto:billalsmaili31@gmail.com">billalsmaili31@gmail.com</a></div>
+          <div><strong>Téléphone :</strong> 06 43 32 45 48</div>
+          <div><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/billalsmaili/" target="_blank" rel="noreferrer">linkedin.com/in/billalsmaili</a></div>
+          <div><strong>CV :</strong> <a href="CV.pdf" target="_blank" rel="noreferrer">Télécharger la version PDF</a></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © <span id="year"></span> Billal SMAILI — Portfolio.
+    </footer>
+  </div>
+</div>
+
+<script>
+  // année auto
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
